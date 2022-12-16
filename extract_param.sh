@@ -9,7 +9,6 @@ source gh_env/bin/activate
 
 wget -q -nd -nH -N -c -R $dir -P gribs ftp://ecmwf-lv:siaMet-1019@meteoftp.lvgm$
 
-LEVELIST="all"
 
 if [ "$(ls -A $dir/)" ]; then # check if the folder is not empty to avoid errors
     for files in $dir/*; do
