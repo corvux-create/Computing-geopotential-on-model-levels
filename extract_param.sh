@@ -7,13 +7,13 @@ dir_additional='gribs_additional'
 
 source gh_env/bin/activate
 
-wget -q -nd -nH -N -c -R $dir -P gribs ftp://ecmwf-lv:siaMet-1019@meteoftp.lvgm$
+wget -q -nd -nH -N -c -R $dir -P gribs ftp://ecmwf-lv:siaMet-1019@meteoftp.lvgma.gov.lv/gribs/WA* # copy files from ftp server
 
 
 if [ "$(ls -A $dir/)" ]; then # check if the folder is not empty to avoid errors
     for files in $dir/*; do
         filename=$(basename -- "$files") # file name without path
-        grib_filter -o $dir_additional/$filename-[shortName].grib - $files <<EO$
+        grib_filter -o $dir_additional/$filename-[shortName].grib - $files <<EOF #eccodes command 'grib_filter'
         write;
 EOF
     done
